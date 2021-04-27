@@ -8,14 +8,15 @@ trigger:
 - main
 
 pool: default
-- stage: Dev
-  jobs:
-  - job: Devdeploy 
-    steps:
-    - bash: echo Devdeplou
+stages:
+  - stage: Dev
+    jobs:
+    - job: Devdeploy 
+      steps:
+      - bash: echo Devdeplou
 
-- stage: QA
-  jobs:
-  - job: QAdeploy 
-    steps:
-    - bash: QAdeploy
+  - stage: QA
+    jobs:
+    - job: QAdeploy 
+      steps:
+      - bash: QAdeploy
