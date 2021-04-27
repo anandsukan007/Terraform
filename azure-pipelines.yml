@@ -13,10 +13,11 @@ stages:
     jobs:
     - job: Devdeploy 
       steps:
-      - bash: echo Devdeplou
-
-  - stage: QA
-    jobs:
-    - job: QAdeploy 
-      steps:
-      - bash: echo QAdeploy
+      - bash: echo Devdeploy
+      - bash: ls -R $(Build.ArtifactStagingDirectory)
+      - task: CopyFiles@2
+        inputs:
+          SourceFolder: '$(System.DefaultWorkingDirectory)'
+          Contents: '**/*.tf'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      - bash: ls -R $(Build.ArtifactStagingDirectory)    
